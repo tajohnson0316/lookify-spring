@@ -22,6 +22,11 @@
   <title>Lookify</title>
 </head>
 <body>
-  <h1>Hello, Lookify!</h1>
+  <div class="container">
+    <div class="d-flex flex-column align-items-center position-absolute top-50 start-50 translate-middle gap-3">
+      <h1>Welcome to Lookify!</h1>
+      <a href="/dashboard">Start Looking!</a>
+    </div>
+  </div>
 </body>
 </html>

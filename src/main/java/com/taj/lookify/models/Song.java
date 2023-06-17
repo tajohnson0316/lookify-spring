@@ -1,7 +1,10 @@
 package com.taj.lookify.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -20,9 +23,9 @@ public class Song {
   @NotBlank(message = "Please provide the song's artist")
   private String artist;
 
-  @NotNull(message = "")
+  @NotNull(message = "Please provide a rating for the song (1-10)")
   @Min(value = 1, message = "Please provide a rating for the song (1-10)")
-  @Max(value = 1, message = "Please provide a rating for the song (1-10)")
+  @Max(value = 10, message = "Please provide a rating for the song (1-10)")
   private Integer rating;
 
   @Column(updatable = false)
@@ -32,9 +35,10 @@ public class Song {
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date updatedAt;
 
-  public Song() {}
+  public Song() {
+  }
 
-  public Song(String title, String artist, @NotNull(message = "") Integer rating) {
+  public Song(String title, String artist, @NotNull Integer rating) {
     this.title = title;
     this.artist = artist;
     this.rating = rating;
